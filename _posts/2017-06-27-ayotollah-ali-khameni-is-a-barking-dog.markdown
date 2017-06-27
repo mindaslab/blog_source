@@ -9,7 +9,7 @@ categories: politics iran india religion islam kashmir
 
 Its clear that the Iranian leader, who is not democratic elected, but holds to power
 saying that Islam has granted him rights to do so seems to be a barking dog. His
-remarks on Kashmir will not improve Iran's situation.
+[remarks on Kashmir](http://idrw.org/iran-jab-on-kashmir/) will not improve Iran's situation.
 
 The way he acts seems is not to respect best interest of Iranian people, but he tries to
 hurt nations that are growing ties with USA. Iran must learn a lot from India. USA
