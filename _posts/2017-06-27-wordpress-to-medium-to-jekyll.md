@@ -1,5 +1,8 @@
 ---
 title: Wordpress to Medium to Jekyll
+layout: post
+date:   2017-06-27 20:15:52 +0530
+categories: blogging
 ---
 
 ![](http://jekyllrb.com/img/logo-2x.png)
