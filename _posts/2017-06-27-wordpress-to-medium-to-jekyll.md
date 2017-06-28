@@ -1,7 +1,7 @@
 ---
 title: Wordpress to Medium to Jekyll
 layout: post
-date:   2017-06-27 20:15:52 +0530
+date: 2017-06-27 20:15:52 +0530
 categories: blogging
 ---
 
