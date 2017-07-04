@@ -19,7 +19,7 @@ memory compared to other top  browsers, but it still sucks.
 Stability of Firefox is in question here. Though its fast it crashes often. I see
 the screen below all the time
 
-![](/firefox_crash.png)
+![](/images/firefox_crash.png)
 
 I have heard how miserable it is for people to work in firefox. Rather than adopting
 a culture of freedom and openness, they have become more corporate like. This seems
