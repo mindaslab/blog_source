@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why I bet on Ruby on Rails
-date: 2017-07-21
+date: 2017-07-21 13:00:00 +0530
 ---
 
 ![](http://www.vizteams.com/wp-content/uploads/2013/05/ruby-on-rails.jpg)
