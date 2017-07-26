@@ -4,8 +4,8 @@ title:  University of Sandiego uses my work
 date:   2017-07-26 20:08:52 +0530
 ---
 
-I  was taking a Python [Datascience](https://courses.edx.org/courses/course-v1:UCSanDiegoX+DSE200x+2T2017/course/)
-course on Edx, when in one of the video tutorials I  saw this:
+I  was taking a [Python Datascience course](https://courses.edx.org/courses/course-v1:UCSanDiegoX+DSE200x+2T2017/course/)
+on Edx, when in one of the video tutorials I  saw this:
 
 ![](/images/ucs_uses_my_work.png)
 
