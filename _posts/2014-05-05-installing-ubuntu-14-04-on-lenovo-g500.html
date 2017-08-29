@@ -1,0 +1,44 @@
+---
+layout: post
+title: Installing Ubuntu 14.04 on Lenovo G500
+date: 2014-05-05 12:01:50.000000000 +05:30
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- display
+- graphics
+- installation
+- lenovo G500
+- linux AMD radeon
+- low graphics mode
+- ubuntu
+- ubuntu 14.04
+meta:
+  _edit_last: '59162484'
+  _publicize_pending: '1'
+  publicize_facebook_url: https://facebook.com/10202694553379228
+  _wpas_done_5592153: '1'
+  _publicize_done_external: a:1:{s:8:"facebook";a:1:{i:1060533832;b:1;}}
+  publicize_google_plus_url: https://plus.google.com/100259931789273154889/posts/8k4axrHdimb
+  _wpas_done_5737964: '1'
+  publicize_twitter_user: karthik_ak
+  publicize_twitter_url: http://t.co/8UakezE1tL
+  _wpas_done_5592152: '1'
+author:
+  login: 77minds
+  email: 77minds@gmail.com
+  display_name: Karthikeyan
+  first_name: ''
+  last_name: ''
+---
+<p>Got a Lenovo G500 laptop with AMD Radeon graphic chipset in it. The installation went well, but then after restart this screen appeared and I did not know what to do. So I went from blog to blog and found a thing out, which I will be presenting it here.</p>
+<p>So I found my answer in this link http://askubuntu.com/questions/141606/how-to-fix-the-system-is-running-in-low-graphics-mode-error . Not all works, what worked for me will be presented here. When you restart your Ubuntu machine, you will get a screen as shown</p>
+<p>[caption id="" align="aligncenter" width="664"]<img src="{{ site.baseurl }}/assets/AiwJH.png" alt="" width="664" height="482" /> Ubuntu Low Graphics Mode[/caption]</p>
+<p>Press enter, you will get some other screen, now press Ctrl+Alt+F1 and you will goto command line, Ubuntu will ask for your username and password, please provide the credentials which you provided during installation.</p>
+<p>Next in command line just give the following</p>
+<pre><code>$ sudo apt-get install xserver-xorg-video-ati xserver-xorg-video-radeon</code></pre>
+<p>Once done give this command to reboot</p>
+<pre><code>$ sudo reboot</code></pre>
+<p>If it works, worship me like God and send me 10 million British pounds.</p>

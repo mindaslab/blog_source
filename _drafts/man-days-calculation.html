@@ -1,0 +1,33 @@
+---
+layout: post
+title: Man days calculation
+date: 
+type: post
+published: false
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '59162484'
+  geo_public: '0'
+author:
+  login: 77minds
+  email: 77minds@gmail.com
+  display_name: Karthikeyan
+  first_name: ''
+  last_name: ''
+---
+<p>Few days ago my manager bugged me so much about putting an estimate about project, I got annoyed. I got so annoyed by his rejection and constant bullying I had to think in some other way.</p>
+<p>Being in 12 years in I.T industry I have no doubt that these MBA's are fools when it comes to technology, but at that time my manager's foolishness shined so much I had to invent a welding glass. So if a work is given, to calculate how much man days it will require the below is the formula I derived. I will explain it.</p>
+<p style="text-align:center;"><strong>Equation 1</strong></p>
+<p><a href="https://77minds.files.wordpress.com/2015/08/man-day-formula.png"><img class="aligncenter wp-image-613 size-full" src="{{ site.baseurl }}/assets/man-day-formula.png" alt="Man day formula" width="909" height="273" /></a></p>
+<p>So let me explain the denominator in the RHS of the above equation, Please see the formula below. This formula helps to calculate effective man power. Lets say that there is one person doing a particular project, then there is just one person. Lets say you add another person, you might think there are two people so the  job will be completed in half the time. That might be okay for non intellectual jobs, but one that needs communication and interaction between two people in some way it wont be 1 + 1, it could be 1+ 0.8, where 0.2 of the second developer is lot in something</p>
+<p style="text-align:center;"><strong>Equation 2</strong></p>
+<p><a href="https://77minds.files.wordpress.com/2015/08/effective-man-power.png"><img class="aligncenter size-full wp-image-614" src="{{ site.baseurl }}/assets/effective-man-power.png" alt="effective man power" width="660" height="208" /></a></p>
+<p>Similarly if you add a third developer it wont be 1.0.8 +0.8 instead it will be 1 + 0.8 + 0.8 * 0.8 , or its just 2.44 and so on. The σ is the coupling coefficient that must be taken into account. This equation also proves that you just can't keep adding developers to a project, as the interaction increases, the effective man power will come down.</p>
+<p>The denominator is nothing but multiplication of MP_effective and T_manday where T_manday is the duration in man days. For an normal Information Technology company, this could  be from 5 - 8 hours. efficient companies have no more than 5 hours of work! Well.....</p>
+<p>Now lets come to the numerator part</p>
+<p>&nbsp;</p>
+<p style="text-align:center;"><strong>Equation 3</strong></p>
+<p><a href="https://77minds.files.wordpress.com/2015/08/cumulative-difficulty.png"><img class="aligncenter size-full wp-image-615" src="{{ site.baseurl }}/assets/cumulative-difficulty.png" alt="cumulative difficulty" width="386" height="203" /></a></p>
+<p><a href="https://77minds.files.wordpress.com/2015/08/iteration-estimate.png"><img class="aligncenter size-full wp-image-616" src="{{ site.baseurl }}/assets/iteration-estimate.png" alt="Iteration estimate" width="660" height="149" /></a></p>

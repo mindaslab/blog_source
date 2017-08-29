@@ -1,0 +1,142 @@
+---
+layout: post
+title: Interview with [Damien George], Creator of the Micro Python project
+date: 2014-10-14 07:52:25.000000000 +05:30
+type: post
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _publicize_pending: '1'
+  is_reblog: '1'
+  post_id: '108442'
+  blog_id: '4779443'
+  reblog_snapshot: "O:8:\"stdClass\":8:{s:5:\"title\";s:67:\"Interview with [Damien
+    George], Creator of the Micro Python project\";s:4:\"type\";s:4:\"post\";s:9:\"mime_type\";s:0:\"\";s:6:\"format\";b:0;s:12:\"modified_gmt\";s:19:\"2013-11-27
+    18:01:26\";s:9:\"permalink\";s:95:\"http://hackaday.com/2013/11/27/interview-with-damien-george-creator-of-the-micro-python-project\";s:7:\"content\";s:9191:\"<div
+    class=\"reblogged-content\">\n\n<a href=\"http://77minds.files.wordpress.com/2014/10/upython.png\"><img
+    class=\"aligncenter size-large wp-image-108444\" alt=\"upython\" src=\"http://77minds.files.wordpress.com/2014/10/upython.png\"
+    width=\"580\" height=\"342\" data-originalSrc=\"http://hackadaycom.files.wordpress.com/2013/11/upython.png?w=580\"
+    data-rehosted=\"1\"></a>\r\n\r\n[Damien George] just created <a href=\"http://www.kickstarter.com/projects/214379695/micro-python-python-for-microcontrollers\">Micro
+    Python</a> (Kickstarter alert!), a lean and fast implementation of the Python
+    scripting language that is optimized to run on a microcontroller. It includes
+    a complete parser, compiler, virtual machine, runtime system, garbage collector
+    and <span style=\"text-decoration:underline;\">was written from scratch</span>.
+    Micro Python currently supports 32-bit ARM processors like the STM32F405 (168MHz
+    Cortex-M4, 1MB flash, 192KB ram) shown in the picture above and will be open source
+    once the already successful campaign finishes. Running your python program is
+    as simple as copying your file to the platform (detected as a mass storage device)
+    and rebooting it. The official micro python board includes a micro SD card slot,
+    4 LEDs, a switch, a real-time clock, an accelerometer and has plenty of I/O pins
+    to interface many peripherals. A nice video can be found on the campaign page
+    and an interview with the project creator is embedded after the break.\r\n\r\n<!--more-->\r\n\r\n<span
+    style=\"color:#009900;\"><em>[Mathieu]</em></span> Hi Damien, thanks for taking
+    the time to answer our questions. After only a few <span style=\"font-size:14px;line-height:1.5;\">days,
+    your Kickstarter campaign was already successful. With 17 days to go, we </span><span
+    style=\"font-size:14px;line-height:1.5;\">look forward to seeing how many people
+    will receive your boards once the campaign </span><span style=\"font-size:14px;line-height:1.5;\">finishes.</span>\r\n\r\n<em><span
+    style=\"color:#ee0000;\">[Damien]</span></em> Thanks Mathieu/Hack-a-day for the
+    opportunity to talk about Micro Python. I'm really excited about this project
+    and it's awesome to see such a positive response in the first few days of the
+    campaign. I've tried to combine functionality with minimalism in the Micro Python
+    board and I'm really looking forward to sending them out to all my backers.\r\n\r\n<span
+    style=\"color:#009900;\"><em>[Mathieu]</em></span> Our feeling at HaD is that
+    many people might underestimate the work you put in to rewrite the Python scripting
+    language from scratch. How many hours did it take you? Can you describe your process?\r\n\r\n<em><span
+    style=\"color:#ee0000;\">[Damien]</span></em> Yes, it took some time, and lots
+    of programming tricks, to get Micro Python to fit on a microcontroller. Let me
+    say though that it's not 100% Python: it has exactly the same grammar as Python
+    3.x, and can emit the same byte code, but the libraries (which make Python what
+    it is) are not all there, yet. Using Micro Python definitely feels the same as
+    using Python (it has <a href=\"http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop\">REPL</a>
+    running on the board), and I'm trying to get as many libraries working as possible.\r\n\r\nI've
+    been working on Micro Python for just over six months, in my spare time. Probably
+    clocked up over 700 hours by now. It's been a lot of fun, selecting components,
+    designing the PCB, soldering parts by hand (mostly with a hot-air gun -- they
+    are so awesome!), and writing the Python implementation itself.\r\n\r\nThe Micro
+    Python software was initially running just on my PC, and I started from the beginning
+    with a simple hand-written lexical analyser. The next part, the parser, was tricky
+    to write because I wanted it to be as small as possible (in code) and use as little
+    RAM as I could get away with. I ended up encoding the grammar in a static data
+    structure (using some C preprocessor magic) and writing a single 320-line non-recursive
+    function to interpret this table on the fly and parse the Python source. The output
+    of the parser is a parse tree, which is fed into the compiler.\r\n\r\nFor the
+    compiler, I wanted to be able to emit native machine code, so that Python would
+    run as fast as possible on the micro. I needed to learn how to encode Thumb machine
+    instructions for this bit, and then turn the stack-machine style code that comes
+    out of the compiler into register-machine style, to take full advantage of the
+    RISC CPU. I also implemented a byte code emitter and virtual machine, so that Micro
+    Python can easily run on other hardware.\r\n\r\nEventually Micro Python was running
+    on my PC, and then I ported it across to the microcontroller. This went surprisingly
+    well and I had it running in a couple of days. Initially I did not have a memory
+    manager, so it would quickly run out of memory on the micro, but then I implemented
+    a simple mark-sweep garbage collector and that works really well.\r\n\r\n<span
+    style=\"color:#009900;\"><em>[Mathieu]</em></span> Did you write the complete
+    bootloader related code yourself? Did you use any library and if so which ones?\r\n\r\n<em><span
+    style=\"color:#ee0000;\">[Damien]</span></em> The bootloader is built in to the
+    micro that I use: it's DFU (device firmware upgrade) which means you just hold
+    a few pins at certain logic levels and reset the chip, and then you can flash
+    it over a USB connection. This also makes it easy for users to upgrade the Micro
+    Python image without any special hardware, and means that you can never brick
+    the device.\r\n\r\nFor the peripherals on the board (like GPIO pins and SD card
+    controller) I used the standard STM libraries, and interfaced them to Micro Python.
+    I also used the awesome FatFs library by [ChaN] to provide filesystem functionality.\r\n\r\n<span
+    style=\"color:#009900;\"><em>[Mathieu]</em></span> Did you already know everything
+    that you needed to do when starting this project? Did you learn many things along
+    the way?\r\n\r\n<em><span style=\"color:#ee0000;\">[Damien]</span></em> I can't
+    even begin to tell you how much I learned doing this project. I have in the past
+    written a few programming languages, including ones that compile to machine code
+    (x86), and I've had experience with many different microcontrollers. But putting
+    everything together, from the hardware right up to the high-level software, exposes
+    you to a whole new set of problems that you've got to learn to solve. For example,
+    learning how to write USB device descriptors, learning how to layout a compact
+    PCB, and even learning new ways of doing things in C!\r\n\r\n<span style=\"color:#009900;\"><em>[Mathieu]</em></span>
+    Could you point our readers to a few good reads on how to create a lexer, parser,
+    compiler, garbage collector and virtual machine like you did?\r\n\r\n<em><span
+    style=\"color:#ee0000;\">[Damien]</span></em> My knowledge came from so many different
+    places: books, university courses, the internet, and just mucking about. I think
+    implementing a language is one of the most satisfying programming tasks you could
+    ever do, and it doesn't have to be difficult. If you want to read a book, go for
+    \"Compilers: Principles, Techniques, and Tools\" by [Aho], [Lam] and [Sethi],
+    also known as the \"Dragon Book\". If you just want to start hacking, set yourself
+    the task of implementing a \"stack machine\", as that will give you the basic
+    understanding of most of the pieces.\r\n\r\n<span style=\"color:#009900;\"><em>[Mathieu]</em></span>
+    A few people on IRC told us that you were accustomed to lengthy projects, could
+    you tell us a bit more about other things you've done?\r\n\r\n<em><span style=\"color:#ee0000;\">[Damien]</span></em>
+    My day job is as a theoretical physicist, and in this field you have projects like
+    the LHC (Large Hadron Collider) that take more than 30 years. Of course, my personal
+    physics projects don't last this long, but it can still take years to go from
+    the initial idea to finally writing up the research paper. My longest hardware
+    project was undoubtedly building my CNC machine (which features at the end of
+    the Kickstarter video). For this I designed my own stepper motor control boards,
+    wrote firmware for an Atmel micro to do the high-level control (not G-code, but
+    similar), designed and built the actual machine (that took over a year...) and
+    wrote all the PC-side software. I even wrote a 3D modelling program to design
+    the machine. Probably overkill.\r\n\r\nI also spent the last year and a half building,
+    with a friend, the website <a href=\"http://paperscape.org/\">paperscape.org</a>,
+    which maps the scientific landscape of research papers. The longest part of this
+    project was implementing (in Python) a LaTeX/TeX parser which could automatically
+    extract bibliographic information to work out how papers are connected.\r\n\r\nI
+    think Micro Python has been the most fun and most challenging project that I have
+    worked on so far. And there's still heaps more to do. One thing I like about this
+    project is the feedback I'm getting from people, and all their suggestion on how
+    to improve Micro Python. I look forward to building up a community around this
+    and having Micro Python running on all kinds of hardware, and doing all kinds
+    of amazing things.</div>\";s:15:\"images_mirrored\";i:1;}"
+  publicize_facebook_url: https://facebook.com/10203767961533761
+  _wpas_done_5592153: '1'
+  _publicize_done_external: a:1:{s:8:"facebook";a:1:{i:1060533832;b:1;}}
+  publicize_google_plus_url: https://plus.google.com/100259931789273154889/posts/JRpW4Gq3y6i
+  _wpas_done_5737964: '1'
+  publicize_twitter_user: karthik_ak
+  publicize_twitter_url: http://t.co/3QTUUn5xEN
+  _wpas_done_5592152: '1'
+author:
+  login: 77minds
+  email: 77minds@gmail.com
+  display_name: Karthikeyan
+  first_name: ''
+  last_name: ''
+---
+
