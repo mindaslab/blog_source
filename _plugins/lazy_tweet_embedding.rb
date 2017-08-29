@@ -1,3 +1,5 @@
+# Just put twitter status url for it to get embedded
+
 require "open-uri"
 require "json"
 
